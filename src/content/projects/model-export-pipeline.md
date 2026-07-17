@@ -6,6 +6,7 @@ role: 'ML Engineer'
 period: '2021 – 2022'
 stack: ['PyTorch', 'TensorFlow', 'ONNX', 'TensorRT', 'FAISS', 'MySQL', 'Docker']
 outcome: 'Models moved from research checkpoints to validated, deployable inference formats — repeatably.'
+category: industry
 order: 3
 ---
 

@@ -9,6 +9,27 @@ import SkillsGrid from '../components/SkillsGrid.astro';
 import Contact from '../components/Contact.astro';
 
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+
+// Grouped display: freelance work first (the goal), then industry, then personal.
+const groups = [
+  {
+    category: 'freelance',
+    label: 'freelance',
+    note: 'Independent client work — delivered end to end.',
+  },
+  {
+    category: 'industry',
+    label: 'industry',
+    note: 'Case studies from full-time roles, anonymized where needed.',
+  },
+  {
+    category: 'personal',
+    label: 'personal',
+    note: 'Pet projects — built to learn, shared to show how I think.',
+  },
+]
+  .map((g) => ({ ...g, projects: projects.filter((p) => p.data.category === g.category) }))
+  .filter((g) => g.projects.length > 0);
 ---
 
 <Base>
@@ -20,9 +41,21 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
     </Section>
 
     <Section id="projects" eyebrow="stage 02 / case studies" title="Selected work">
-      <div class="cards">
-        {projects.map((project) => <ProjectCard {project} />)}
-      </div>
+      {
+        groups.map((group) => (
+          <div class="group">
+            <div class="group-head">
+              <h3 class="mono">/{group.label}</h3>
+              <p>{group.note}</p>
+            </div>
+            <div class="cards">
+              {group.projects.map((project) => (
+                <ProjectCard {project} />
+              ))}
+            </div>
+          </div>
+        ))
+      }
     </Section>
 
     <Section id="skills" eyebrow="stage 03 / stack" title="Tools I reach for">
@@ -36,6 +69,26 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
 </Base>
 
 <style>
+  .group + .group {
+    margin-top: 2.6rem;
+  }
+  .group-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.9rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  .group-head h3 {
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--accent-deep);
+  }
+  .group-head p {
+    font-size: 0.85rem;
+    color: var(--ink-faint);
+  }
   .cards {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(19rem, 100%), 1fr));

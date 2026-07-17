@@ -29,9 +29,11 @@ Read `README.md` for the human-facing docs; this file is for working sessions.
   - `src/data/profile.ts` — experience timeline, skills, education.
   - `src/content/{projects,blog}/*.md` — collections defined in
     `src/content.config.ts` (Astro glob loaders; entry `id` = filename slug).
-- **Case studies substitute for personal projects.** The CV lists none, so the
-  portfolio pieces are anonymized work stories (problem → approach → outcome).
-  Frontmatter `order` controls home-page ordering.
+- **Case studies have a `category`**: `freelance` | `industry` | `personal`
+  (schema in `src/content.config.ts`). The home page groups them in that
+  order, hiding empty groups; group labels/notes live in `index.astro`.
+  Industry entries are anonymized work stories (problem → approach →
+  outcome). Frontmatter `order` sorts within and across groups.
 - **CV PDF is generated, not uploaded**: `npm run generate:cv` runs
   `scripts/generate-cv.mjs` (pdf-lib, brand colors from palette.json) and
   writes `public/cv-mathias-bertorelli.pdf`. Regenerate after any experience

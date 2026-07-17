@@ -10,13 +10,13 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 const { Content } = await render(project);
-const { title, summary, org, role, period, stack, outcome } = project.data;
+const { title, summary, org, role, period, stack, outcome, category } = project.data;
 ---
 
 <Base title={`${title} — Mathias Bertorelli`} description={summary}>
   <main class="wrap">
     <p class="back mono"><a href={href('/#projects')}>← all case studies</a></p>
-    <p class="eyebrow">case study</p>
+    <p class="eyebrow">case study · {category}</p>
     <h1>{title}</h1>
     <dl class="facts">
       <div><dt class="mono">org</dt><dd>{org}</dd></div>

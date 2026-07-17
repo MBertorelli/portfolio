@@ -11,6 +11,7 @@ const projects = defineCollection({
     period: z.string(),
     stack: z.array(z.string()),
     outcome: z.string(),
+    category: z.enum(['freelance', 'industry', 'personal']).default('industry'),
     order: z.number().default(99),
   }),
 });

@@ -6,6 +6,7 @@ role: 'Architect & lead — now product owner of the platform'
 period: '2024 – present'
 stack: ['AWS', 'Terraform', 'Multi-account architecture', 'Platform engineering', 'Compliance']
 outcome: 'Developers provision their own compliant infrastructure from templates — no tickets, no waiting.'
+category: industry
 order: 1
 ---
 

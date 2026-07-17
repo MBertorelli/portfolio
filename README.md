@@ -49,7 +49,9 @@ npm run preview    # serve the built site
 - **Experience / skills** — edit `src/data/profile.ts`.
 - **Case study** — add a Markdown file to `src/content/projects/` with the
   frontmatter fields (`title`, `summary`, `org`, `role`, `period`, `stack`,
-  `outcome`, `order`). It appears on the home page and gets its own page.
+  `outcome`, `category`, `order`). `category` is `freelance`, `industry` or
+  `personal` — the home page shows them grouped in that order. Each case
+  study also gets its own page.
 - **Blog post** — copy `src/content/blog/example-post.md`, set `draft: false`.
 - **CV PDF** — edit the data inside `scripts/generate-cv.mjs`, then
   `npm run generate:cv`. Never commit the original CV PDF (it contains the
