@@ -2,7 +2,7 @@
 title: 'Real-time defect detection for mesh fabrication'
 summary: 'An AI vision system that watches a mesh production process through an industrial camera, segments defects with a UNet model, and overlays physical measurements — height, width, wire thickness — in real time.'
 org: 'Innovision (freelance)'
-role: 'Computer Vision / ML Engineer — sole developer'
+role: 'Computer Vision / ML Engineer'
 period: '2026'
 stack: ['Python', 'PyTorch', 'UNet + ResNet34', 'OpenCV', 'Industrial camera (Daheng Galaxy)', 'uv']
 outcome: 'Live defect detection and dimensional measurement on the production line, from camera frame to annotated overlay.'

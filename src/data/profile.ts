@@ -4,6 +4,8 @@ export interface Job {
   dates: string;
   summary: string;
   stack?: string[];
+  /** Which timeline column the job renders in. */
+  track: 'industry' | 'freelance';
 }
 
 export const experience: Job[] = [
@@ -12,8 +14,9 @@ export const experience: Job[] = [
     org: 'Innovision',
     dates: '2024 — present',
     summary:
-      'Ongoing freelance collaboration building vision systems for industrial production lines: real-time mesh defect segmentation with physical measurements (UNet on an industrial camera feed), high-precision screen edge detection, and bakery-line defect detection. Sole developer, from camera to deployed pipeline.',
+      'Ongoing freelance collaboration building vision systems for industrial production lines: real-time mesh defect segmentation with physical measurements (UNet on an industrial camera feed), high-precision screen edge detection, and bakery-line defect detection. Delivered end to end, from camera to deployed pipeline.',
     stack: ['Python', 'PyTorch', 'OpenCV', 'Industrial cameras', 'Docker'],
+    track: 'freelance',
   },
   {
     role: 'Associate Director — MLOps',
@@ -22,6 +25,7 @@ export const experience: Job[] = [
     summary:
       'Designed and built a multi-tenant AWS platform (one account per environment: dev, uat, preprod, prod) with isolated project tenants and self-service Terraform templates — developers provision their own compliant infrastructure. Led the implementing team; now product owner of the platform. Also leading internal and vendor teams from kickoff to production, and delivery of agentic frameworks and LLM-based solutions.',
     stack: ['AWS', 'Terraform', 'Platform engineering', 'Agentic AI', 'Compliance'],
+    track: 'industry',
   },
   {
     role: 'Machine Learning Engineer',
@@ -30,6 +34,7 @@ export const experience: Job[] = [
     summary:
       'Owned the full ML lifecycle on GCP end to end. Built the Feature Store and the MLOps / CI-CD pipelines used by the whole Data Science team, defined team-wide good practices, and shipped internal Python packages that sped up every new project. LLM work with prompt engineering and RAG.',
     stack: ['GCP', 'Terraform', 'Airflow', 'Docker', 'PaLM'],
+    track: 'industry',
   },
   {
     role: 'Machine Learning Engineer',
@@ -38,6 +43,7 @@ export const experience: Job[] = [
     summary:
       'Maintained and improved the AWS infrastructure used by the entire Data Science team; refactored legacy code and brought repositories up to standard with tests and containers.',
     stack: ['AWS', 'Terraform', 'Docker', 'Airflow'],
+    track: 'industry',
   },
   {
     role: 'Machine Learning Engineer',
@@ -46,6 +52,7 @@ export const experience: Job[] = [
     summary:
       'Built a distributed image-generation system to improve model training, exported neural networks to ONNX / TensorRT with validation tooling, and introduced MLOps methodology to the company via an Airflow proof of concept.',
     stack: ['PyTorch', 'TensorFlow', 'ONNX', 'TensorRT', 'FAISS'],
+    track: 'industry',
   },
   {
     role: 'Researcher & Backend Developer',
@@ -54,6 +61,7 @@ export const experience: Job[] = [
     summary:
       'ML, deep learning and computer vision projects with SEAT and Cdmon — classification, churn prediction, forecasting, NLP. Earlier: backend development for external clients.',
     stack: ['TensorFlow', 'Scikit-learn', 'Django', 'Flask'],
+    track: 'industry',
   },
 ];
 

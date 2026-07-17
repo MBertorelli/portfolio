@@ -2,7 +2,7 @@
 title: 'Defect detection on a live bakery production line'
 summary: 'A computer-vision pipeline for detecting defective products on a real, running production line — the first project of an ongoing freelance collaboration with Innovision.'
 org: 'Innovision (freelance)'
-role: 'Computer Vision Engineer — sole developer'
+role: 'Computer Vision Engineer'
 period: '2024 – 2025'
 stack: ['Python', 'OpenCV', 'YAML-configured pipeline']
 outcome: 'Automated visual inspection running against a real production line.'

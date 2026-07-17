@@ -2,7 +2,7 @@
 title: 'High-precision screen edge detection'
 summary: 'A classical computer-vision system that locates screen edges in high-resolution industrial captures, built as a config-driven experimentation harness to converge on the most reliable detection strategy.'
 org: 'Innovision (freelance)'
-role: 'Computer Vision Engineer — sole developer'
+role: 'Computer Vision Engineer'
 period: '2025 – 2026'
 stack: ['Python', 'OpenCV', 'Canny / Otsu / adaptive thresholding', 'Docker', 'Makefile']
 outcome: 'A tunable, reproducible edge-detection pipeline for 2840×2840 px quality-control imagery.'

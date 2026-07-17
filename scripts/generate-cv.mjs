@@ -27,7 +27,7 @@ const cv = {
       org: 'Innovision',
       dates: 'Oct 2024 – Present',
       bullets: [
-        'Ongoing freelance collaboration: vision systems for industrial production lines, delivered end to end as sole developer.',
+        'Ongoing freelance collaboration: vision systems for industrial production lines, delivered end to end — from camera to production pipeline.',
         'Real-time mesh defect detection: UNet segmentation on an industrial camera feed with physical measurements overlaid live; high-precision screen edge detection; bakery-line defect detection.',
       ],
       stack: 'Python · PyTorch · OpenCV · Industrial cameras · Docker',
