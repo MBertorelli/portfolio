@@ -1,0 +1,29 @@
+---
+import { EMAIL, GITHUB_URL, LINKEDIN_URL, CV_FILENAME, href } from '../consts';
+---
+
+<div class="contact">
+  <p>
+    Available for freelance platform, MLOps and ML engineering work — remote or Barcelona. The
+    fastest way to reach me is email; I answer within a day.
+  </p>
+  <p class="email mono"><a href={`mailto:${EMAIL}`}>{EMAIL}</a></p>
+  <p class="links mono">
+    <a href={GITHUB_URL}>github</a> · <a href={LINKEDIN_URL}>linkedin</a> ·
+    <a href={href('/' + CV_FILENAME)} download>cv (pdf)</a>
+  </p>
+</div>
+
+<style>
+  .contact {
+    max-width: 52ch;
+    color: var(--ink-soft);
+  }
+  .email {
+    font-size: 1.15rem;
+    margin-block: 1.1rem 0.6rem;
+  }
+  .links {
+    font-size: 0.85rem;
+  }
+</style>

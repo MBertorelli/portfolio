@@ -1,0 +1,72 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { href } from '../../consts';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<Base title="Writing — Mathias Bertorelli" description="Notes on MLOps, platform engineering and shipping ML to production.">
+  <main class="wrap">
+    <p class="eyebrow">writing</p>
+    <h1>Notes on MLOps & platform engineering</h1>
+    {
+      posts.length === 0 ? (
+        <p class="empty">
+          Nothing published yet — writing on feature stores, CI/CD for models and platform
+          engineering is on the way. Meanwhile, the <a href={href('/#projects')}>case studies</a>
+          cover the practical side.
+        </p>
+      ) : (
+        <ul class="posts">
+          {posts.map((post) => (
+            <li>
+              <a href={href(`/blog/${post.id}/`)}>{post.data.title}</a>
+              <span class="date mono">{post.data.pubDate.toISOString().slice(0, 10)}</span>
+              <p>{post.data.description}</p>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </main>
+</Base>
+
+<style>
+  main {
+    padding-top: 3rem;
+    min-height: 45vh;
+  }
+  h1 {
+    font-size: clamp(1.7rem, 4.5vw, 2.3rem);
+    margin: 0.8rem 0 1.6rem;
+  }
+  .empty {
+    color: var(--ink-soft);
+    max-width: 52ch;
+  }
+  .posts {
+    list-style: none;
+    padding: 0;
+  }
+  .posts li {
+    padding-block: 1.1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .posts a {
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .date {
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+    margin-left: 0.8rem;
+  }
+  .posts p {
+    color: var(--ink-soft);
+    font-size: 0.93rem;
+    margin-top: 0.25rem;
+  }
+</style>

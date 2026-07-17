@@ -1,0 +1,44 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import ExperienceTimeline from '../components/ExperienceTimeline.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import SkillsGrid from '../components/SkillsGrid.astro';
+import Contact from '../components/Contact.astro';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<Base>
+  <main>
+    <Hero />
+
+    <Section id="experience" eyebrow="stage 01 / experience" title="Where I've built">
+      <ExperienceTimeline />
+    </Section>
+
+    <Section id="projects" eyebrow="stage 02 / case studies" title="Selected work">
+      <div class="cards">
+        {projects.map((project) => <ProjectCard {project} />)}
+      </div>
+    </Section>
+
+    <Section id="skills" eyebrow="stage 03 / stack" title="Tools I reach for">
+      <SkillsGrid />
+    </Section>
+
+    <Section id="contact" eyebrow="stage 04 / deploy" title="Let's work together">
+      <Contact />
+    </Section>
+  </main>
+</Base>
+
+<style>
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(19rem, 100%), 1fr));
+    gap: 1.2rem;
+  }
+</style>

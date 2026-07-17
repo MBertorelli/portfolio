@@ -1,0 +1,103 @@
+---
+import '../styles/global.css';
+import { SITE_TITLE, SITE_DESCRIPTION, NAME, GITHUB_URL, href } from '../consts';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(href('/photo.png'), Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href={href('/favicon.svg')} />
+    <link rel="sitemap" href={href('/sitemap-index.xml')} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary" />
+  </head>
+  <body>
+    <header class="wrap">
+      <nav aria-label="Main">
+        <a class="brand mono" href={href('/')}>mathias<span>@</span>bertorelli</a>
+        <div class="links mono">
+          <a href={href('/#experience')}>experience</a>
+          <a href={href('/#projects')}>projects</a>
+          <a href={href('/blog/')}>blog</a>
+          <a href={href('/#contact')}>contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <slot />
+
+    <footer>
+      <div class="wrap">
+        <p class="mono positioning">— I design and run the platforms ML teams build on.</p>
+        <p>
+          © {new Date().getFullYear()} {NAME} · Built with <a href="https://astro.build">Astro</a> ·
+          <a href={GITHUB_URL + '/portfolio'}>Source</a>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  header {
+    padding-block: 1.4rem;
+  }
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .brand {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .brand span {
+    color: var(--accent);
+  }
+  .links {
+    display: flex;
+    gap: 1.4rem;
+    font-size: 0.85rem;
+  }
+  .links a {
+    color: var(--ink-soft);
+    text-decoration: none;
+  }
+  .links a:hover {
+    color: var(--accent-deep);
+  }
+  footer {
+    margin-top: 6rem;
+    border-top: 1px solid var(--border);
+    padding-block: 2.5rem;
+    font-size: 0.9rem;
+    color: var(--ink-faint);
+  }
+  .positioning {
+    color: var(--ink-soft);
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+  }
+</style>

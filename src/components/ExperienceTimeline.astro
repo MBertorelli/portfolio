@@ -1,0 +1,89 @@
+---
+import { experience } from '../data/profile';
+---
+
+<ol class="timeline">
+  {
+    experience.map((job) => (
+      <li>
+        <div class="head">
+          <h3>{job.role}</h3>
+          <span class="dates mono">{job.dates}</span>
+        </div>
+        <p class="org">{job.org}</p>
+        <p class="summary">{job.summary}</p>
+        {job.stack && (
+          <p class="stack">
+            {job.stack.map((s) => (
+              <span class="tag">{s}</span>
+            ))}
+          </p>
+        )}
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  .timeline {
+    list-style: none;
+    padding: 0;
+    /* the pipeline rail — brand signature */
+    border-left: 2px solid var(--border);
+    margin-left: 0.3rem;
+  }
+  li {
+    position: relative;
+    padding: 0 0 2.4rem 1.6rem;
+  }
+  li:last-child {
+    padding-bottom: 0.5rem;
+  }
+  /* stage node on the rail */
+  li::before {
+    content: '';
+    position: absolute;
+    left: calc(-0.35rem - 1px);
+    top: 0.45rem;
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+  }
+  li:first-child::before {
+    background: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-wash);
+  }
+  .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  h3 {
+    font-size: 1.05rem;
+  }
+  .dates {
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+  }
+  .org {
+    color: var(--accent-deep);
+    font-weight: 550;
+    font-size: 0.95rem;
+    margin: 0.15rem 0 0.5rem;
+  }
+  .summary {
+    color: var(--ink-soft);
+    font-size: 0.97rem;
+    max-width: 60ch;
+  }
+  .stack {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin-top: 0.7rem;
+  }
+</style>

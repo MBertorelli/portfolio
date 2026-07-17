@@ -1,0 +1,54 @@
+---
+import { skills, education } from '../data/profile';
+---
+
+<div class="grid">
+  {
+    skills.map(({ group, items }) => (
+      <div class="cell">
+        <h3 class="mono">{group}</h3>
+        <ul>
+          {items.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
+    ))
+  }
+</div>
+<div class="edu">
+  <h3 class="mono">Education</h3>
+  <ul>
+    {education.map((e) => <li>{e}</li>)}
+  </ul>
+</div>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+    gap: 1.6rem 2rem;
+  }
+  h3 {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.5rem;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+  li {
+    padding-block: 0.12rem;
+  }
+  .edu {
+    margin-top: 2rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--border);
+  }
+</style>

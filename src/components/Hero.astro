@@ -1,0 +1,89 @@
+---
+import { NAME, POSITIONING, EMAIL, GITHUB_URL, LINKEDIN_URL, CV_FILENAME, href } from '../consts';
+---
+
+<section class="wrap hero">
+  <p class="status mono"><span class="pulse" aria-hidden="true"></span>available for freelance</p>
+  <div class="intro">
+    <img src={href('/photo.png')} alt={`Portrait of ${NAME}`} width="88" height="90" loading="eager" />
+    <div>
+      <p class="name">{NAME}</p>
+      <p class="roles mono">mlops · platform · genai engineer — barcelona</p>
+    </div>
+  </div>
+  <h1>{POSITIONING}</h1>
+  <p class="lede">
+    Feature stores, CI/CD for models, infrastructure as code, and the paved roads that let data
+    science teams ship without friction — from notebook to regulated production.
+  </p>
+  <div class="actions">
+    <a class="btn btn-primary" href={href('/' + CV_FILENAME)} download>download cv ↓</a>
+    <a class="btn btn-ghost" href={`mailto:${EMAIL}`}>email me</a>
+    <a class="btn btn-ghost" href={GITHUB_URL}>github</a>
+    <a class="btn btn-ghost" href={LINKEDIN_URL}>linkedin</a>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-block: 4rem 1rem;
+  }
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 0.8rem;
+    color: var(--accent-deep);
+    border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+    background: var(--accent-wash);
+    border-radius: 999px;
+    padding: 0.25rem 0.8rem;
+    margin-bottom: 2rem;
+  }
+  .pulse {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    50% {
+      box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 20%, transparent);
+    }
+  }
+  .intro {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.6rem;
+  }
+  .intro img {
+    border-radius: 10px;
+    object-fit: cover;
+    border: 1px solid var(--border);
+  }
+  .name {
+    font-weight: 650;
+    letter-spacing: -0.01em;
+  }
+  .roles {
+    font-size: 0.8rem;
+    color: var(--ink-faint);
+  }
+  h1 {
+    font-size: clamp(2rem, 5.5vw, 3.1rem);
+    max-width: 21ch;
+    margin-bottom: 1.2rem;
+  }
+  .lede {
+    color: var(--ink-soft);
+    max-width: 52ch;
+    margin-bottom: 2rem;
+  }
+  .actions {
+    display: flex;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+  }
+</style>

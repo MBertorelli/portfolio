@@ -1,0 +1,49 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { href } from '../../consts';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Base title={`${post.data.title} — Mathias Bertorelli`} description={post.data.description}>
+  <main class="wrap">
+    <p class="back mono"><a href={href('/blog/')}>← all posts</a></p>
+    <p class="eyebrow">post · {post.data.pubDate.toISOString().slice(0, 10)}</p>
+    <h1>{post.data.title}</h1>
+    <article><Content /></article>
+  </main>
+</Base>
+
+<style>
+  main {
+    padding-top: 2.5rem;
+  }
+  .back {
+    font-size: 0.85rem;
+    margin-bottom: 2.2rem;
+  }
+  h1 {
+    font-size: clamp(1.7rem, 4.5vw, 2.3rem);
+    margin: 0.8rem 0 1.8rem;
+    max-width: 26ch;
+  }
+  article {
+    color: var(--ink-soft);
+  }
+  article :global(h2) {
+    color: var(--ink);
+    font-size: 1.25rem;
+    margin: 2.2rem 0 0.8rem;
+  }
+  article :global(p) {
+    margin-bottom: 1rem;
+    max-width: 65ch;
+  }
+</style>

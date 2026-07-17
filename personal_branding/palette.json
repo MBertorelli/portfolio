@@ -1,0 +1,23 @@
+{
+  "name": "mathias-bertorelli-technical-clean",
+  "colors": {
+    "ink": { "hex": "#0F172A", "use": "primary text, headings" },
+    "ink-soft": { "hex": "#475569", "use": "secondary text, descriptions" },
+    "ink-faint": { "hex": "#94A3B8", "use": "meta text, dates" },
+    "bg": { "hex": "#F8FAFC", "use": "page background" },
+    "surface": { "hex": "#FFFFFF", "use": "cards, elevated surfaces" },
+    "border": { "hex": "#E2E8F0", "use": "hairline borders, rails" },
+    "accent": { "hex": "#06B6D4", "use": "links, pipeline nodes, tags — use sparingly" },
+    "accent-deep": { "hex": "#0E7490", "use": "link hover, accent text on light bg" },
+    "accent-wash": { "hex": "#ECFEFF", "use": "tag backgrounds, subtle highlights" }
+  },
+  "typography": {
+    "body": { "family": "Inter Variable", "fallback": "system-ui, sans-serif", "package": "@fontsource-variable/inter" },
+    "mono": { "family": "JetBrains Mono", "fallback": "ui-monospace, monospace", "package": "@fontsource/jetbrains-mono", "use": "eyebrows, dates, stack tags, code" }
+  },
+  "voice": {
+    "positioning": "I design and run the platforms ML teams build on.",
+    "style": "precise, calm, outcome-focused"
+  },
+  "motif": "pipeline rail: thin vertical rail with stage nodes, echoing a deployment pipeline"
+}

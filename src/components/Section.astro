@@ -1,0 +1,29 @@
+---
+interface Props {
+  id: string;
+  eyebrow: string;
+  title: string;
+}
+const { id, eyebrow, title } = Astro.props;
+---
+
+<section {id} class="wrap">
+  <p class="eyebrow">{eyebrow}</p>
+  <h2>{title}</h2>
+  <slot />
+</section>
+
+<style>
+  section {
+    padding-block: 3.5rem 0;
+    /* pipeline rail: connects this section's node to the next */
+    position: relative;
+  }
+  .eyebrow {
+    margin-bottom: 0.9rem;
+  }
+  h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1.8rem;
+  }
+</style>

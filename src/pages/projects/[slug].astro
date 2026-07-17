@@ -1,0 +1,106 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { href } from '../../consts';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({ params: { slug: project.id }, props: { project } }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const { title, summary, org, role, period, stack, outcome } = project.data;
+---
+
+<Base title={`${title} — Mathias Bertorelli`} description={summary}>
+  <main class="wrap">
+    <p class="back mono"><a href={href('/#projects')}>← all case studies</a></p>
+    <p class="eyebrow">case study</p>
+    <h1>{title}</h1>
+    <dl class="facts">
+      <div><dt class="mono">org</dt><dd>{org}</dd></div>
+      <div><dt class="mono">role</dt><dd>{role}</dd></div>
+      <div><dt class="mono">period</dt><dd>{period}</dd></div>
+      <div>
+        <dt class="mono">stack</dt>
+        <dd class="stack">{stack.map((s: string) => <span class="tag">{s}</span>)}</dd>
+      </div>
+    </dl>
+    <p class="outcome"><span class="mono" aria-hidden="true">-›</span> {outcome}</p>
+    <article>
+      <Content />
+    </article>
+  </main>
+</Base>
+
+<style>
+  main {
+    padding-top: 2.5rem;
+  }
+  .back {
+    font-size: 0.85rem;
+    margin-bottom: 2.2rem;
+  }
+  .back a {
+    text-decoration: none;
+  }
+  h1 {
+    font-size: clamp(1.7rem, 4.5vw, 2.4rem);
+    margin: 0.8rem 0 1.6rem;
+    max-width: 26ch;
+  }
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, max-content));
+    gap: 1rem 2.5rem;
+    border-block: 1px solid var(--border);
+    padding-block: 1.1rem;
+    margin-bottom: 1.4rem;
+  }
+  dt {
+    font-size: 0.72rem;
+    letter-spacing: 0.07em;
+    color: var(--ink-faint);
+  }
+  dd {
+    margin: 0.2rem 0 0;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+  }
+  .stack {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+  .outcome {
+    font-weight: 550;
+    margin-bottom: 2rem;
+  }
+  .outcome span {
+    color: var(--accent);
+  }
+  article {
+    color: var(--ink-soft);
+  }
+  article :global(h2) {
+    color: var(--ink);
+    font-size: 1.25rem;
+    margin: 2.2rem 0 0.8rem;
+  }
+  article :global(p) {
+    margin-bottom: 1rem;
+    max-width: 65ch;
+  }
+  article :global(ul) {
+    padding-left: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  article :global(li) {
+    margin-bottom: 0.5rem;
+    max-width: 62ch;
+  }
+  article :global(strong) {
+    color: var(--ink);
+  }
+</style>
