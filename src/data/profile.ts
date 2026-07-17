@@ -12,8 +12,8 @@ export const experience: Job[] = [
     org: 'AstraZeneca – Alexion',
     dates: '2024 — present',
     summary:
-      'Leading internal and vendor teams from kickoff to production. Designed the Data & AI platform with on-demand, compliant infrastructure deployment — removing cross-team bottlenecks. Project blueprints covering architecture, cybersecurity and compliance. Agentic frameworks and LLM-based solutions.',
-    stack: ['Platform design', 'Architecture', 'Agentic AI', 'Compliance'],
+      'Designed and built a multi-tenant AWS platform (one account per environment: dev, uat, preprod, prod) with isolated project tenants and self-service Terraform templates — developers provision their own compliant infrastructure. Led the implementing team; now product owner of the platform. Also leading internal and vendor teams from kickoff to production, and delivery of agentic frameworks and LLM-based solutions.',
+    stack: ['AWS', 'Terraform', 'Platform engineering', 'Agentic AI', 'Compliance'],
   },
   {
     role: 'Machine Learning Engineer',

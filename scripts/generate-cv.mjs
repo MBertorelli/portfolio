@@ -27,11 +27,12 @@ const cv = {
       org: 'AstraZeneca – Alexion',
       dates: 'Nov 2024 – Present',
       bullets: [
-        'Lead internal and vendor teams across the full project lifespan, from kickoff to productionalization.',
-        'Design project blueprints: solution design, architecture diagrams, cybersecurity and compliance with company standards.',
-        'Led the design and implementation of the Data & AI team platform, including on-demand automatic infrastructure deployment for development teams — reducing cross-team bottlenecks while keeping compliance.',
+        'Designed and built a multi-tenant AWS cloud platform — one account per environment (dev, uat, preprod, prod) with isolated project tenants — leading a team of engineers; now product owner of the platform.',
+        'Self-service infrastructure: curated Terraform templates let development teams provision their own compliant resources, removing cross-team bottlenecks.',
+        'Lead internal and vendor teams across the full project lifespan, from kickoff to productionalization; project blueprints covering solution design, architecture, cybersecurity and compliance.',
         'Led and contributed to agentic frameworks and LLM-based solutions.',
       ],
+      stack: 'AWS · Terraform · Platform engineering · GenAI',
     },
     {
       role: 'Machine Learning Engineer',
@@ -93,7 +94,7 @@ const font = await doc.embedFont(StandardFonts.Helvetica);
 const bold = await doc.embedFont(StandardFonts.HelveticaBold);
 
 const A4 = [595.28, 841.89];
-const MARGIN = 52;
+const MARGIN = 46;
 const WIDTH = A4[0] - MARGIN * 2;
 let page = doc.addPage(A4);
 let y = A4[1] - MARGIN;
@@ -136,8 +137,8 @@ const rule = () => {
 };
 
 const section = (label) => {
-  ensure(34);
-  y -= 14;
+  ensure(70); // keep the header attached to at least two lines of content
+  y -= 10;
   page.drawCircle({ x: MARGIN + 2.5, y: y - 4.5, size: 2.5, color: ACCENT });
   page.drawText(label.toUpperCase(), { x: MARGIN + 11, y: y - 8, size: 9.5, font: bold, color: ACCENT });
   y -= 16;
@@ -164,13 +165,13 @@ for (const job of cv.experience) {
     const save = y;
     y = save;
     for (const line of wrap(b, font, 9.5, WIDTH - 16)) {
-      ensure(12.5);
+      ensure(12);
       page.drawText(line, { x: MARGIN + 16, y: y - 9.5, size: 9.5, font, color: SOFT });
-      y -= 12.5;
+      y -= 12;
     }
   }
   if (job.stack) text(job.stack, { size: 8.5, color: FAINT, x: MARGIN + 16, width: WIDTH - 16, gap: 4 });
-  y -= 6;
+  y -= 3;
 }
 
 section('Education');

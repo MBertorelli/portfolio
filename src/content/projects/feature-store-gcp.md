@@ -6,7 +6,7 @@ role: 'ML Engineer — owner of the ML pipeline'
 period: '2023 – 2024'
 stack: ['GCP', 'Terraform', 'Apache Airflow', 'Docker', 'Python']
 outcome: 'One shared, versioned path to production for every model — owned end to end.'
-order: 1
+order: 2
 ---
 
 ## The problem
