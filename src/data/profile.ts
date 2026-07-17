@@ -8,6 +8,14 @@ export interface Job {
 
 export const experience: Job[] = [
   {
+    role: 'Computer Vision Engineer — Freelance',
+    org: 'Innovision',
+    dates: '2024 — present',
+    summary:
+      'Ongoing freelance collaboration building vision systems for industrial production lines: real-time mesh defect segmentation with physical measurements (UNet on an industrial camera feed), high-precision screen edge detection, and bakery-line defect detection. Sole developer, from camera to deployed pipeline.',
+    stack: ['Python', 'PyTorch', 'OpenCV', 'Industrial cameras', 'Docker'],
+  },
+  {
     role: 'Associate Director — MLOps',
     org: 'AstraZeneca – Alexion',
     dates: '2024 — present',

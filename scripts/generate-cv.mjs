@@ -23,6 +23,16 @@ const cv = {
     'Computer Science degree, MSc in Data Science. I design and run the platforms ML teams build on — with a strong focus on good practices and reliable, scalable solution design.',
   experience: [
     {
+      role: 'Computer Vision Engineer — Freelance',
+      org: 'Innovision',
+      dates: 'Oct 2024 – Present',
+      bullets: [
+        'Ongoing freelance collaboration: vision systems for industrial production lines, delivered end to end as sole developer.',
+        'Real-time mesh defect detection: UNet segmentation on an industrial camera feed with physical measurements overlaid live; high-precision screen edge detection; bakery-line defect detection.',
+      ],
+      stack: 'Python · PyTorch · OpenCV · Industrial cameras · Docker',
+    },
+    {
       role: 'Associate Director — MLOps',
       org: 'AstraZeneca – Alexion',
       dates: 'Nov 2024 – Present',
