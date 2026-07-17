@@ -6,8 +6,7 @@ export const NAME = 'Mathias Bertorelli';
 export const POSITIONING = 'I design and run the platforms ML teams build on.';
 export const EMAIL = 'mathiasbertorelli@gmail.com';
 export const GITHUB_URL = 'https://github.com/MBertorelli';
-// TODO(mathias): confirm the LinkedIn slug is correct before sharing the site.
-export const LINKEDIN_URL = 'https://www.linkedin.com/in/mathias-bertorelli';
+export const LINKEDIN_URL = 'https://www.linkedin.com/in/mathias-bertorelli-argibay-a6b5a61b9/';
 export const CV_FILENAME = 'cv-mathias-bertorelli.pdf';
 
 /** BASE_URL-aware link helper — required because the site lives under /portfolio on GitHub Pages. */

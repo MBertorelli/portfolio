@@ -59,8 +59,6 @@ Read `README.md` for the human-facing docs; this file is for working sessions.
   `directory` build format and avoid GitHub Pages redirects.
 - **Photo**: `public/photo.png` was extracted from the CV PDF's embedded
   image (311×318). Replace with a higher-quality original when available.
-- **LinkedIn URL** in `src/consts.ts` is a best guess (`mathias-bertorelli`)
-  — flagged with a TODO; confirm with Mathias before relying on it.
 - **WSL**: repo lives on `/mnt/c` (Windows drive) — builds are slower than
   native ext4; that's environmental, not a project problem.
 - Verification: `npm run build`, then grep `dist/` for the street name and
