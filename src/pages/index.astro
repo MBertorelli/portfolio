@@ -10,26 +10,27 @@ import Contact from '../components/Contact.astro';
 
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 
-// Grouped display: freelance work first (the goal), then industry, then personal.
+// Tabbed display: freelance work first (the goal), then industry, then personal.
 const groups = [
   {
     category: 'freelance',
     label: 'freelance',
     note: 'Independent client work — delivered end to end.',
+    empty: 'Freelance case studies are coming.',
   },
   {
     category: 'industry',
     label: 'industry',
     note: 'Case studies from full-time roles, anonymized where needed.',
+    empty: 'Industry case studies are coming.',
   },
   {
     category: 'personal',
     label: 'personal',
     note: 'Pet projects — built to learn, shared to show how I think.',
+    empty: 'Pet projects are on their way — meanwhile, /freelance and /industry cover the shipped work.',
   },
-]
-  .map((g) => ({ ...g, projects: projects.filter((p) => p.data.category === g.category) }))
-  .filter((g) => g.projects.length > 0);
+].map((g) => ({ ...g, projects: projects.filter((p) => p.data.category === g.category) }));
 ---
 
 <Base>
@@ -41,22 +42,58 @@ const groups = [
     </Section>
 
     <Section id="projects" eyebrow="stage 02 / case studies" title="Selected work">
+      <div class="tabs mono" role="tablist" aria-label="Case study categories">
+        {
+          groups.map((group, i) => (
+            <button
+              class="tab"
+              role="tab"
+              id={`tab-${group.category}`}
+              aria-controls={`panel-${group.category}`}
+              aria-selected={i === 0 ? 'true' : 'false'}
+            >
+              /{group.label}
+            </button>
+          ))
+        }
+      </div>
       {
-        groups.map((group) => (
-          <div class="group">
-            <div class="group-head">
-              <h3 class="mono">/{group.label}</h3>
-              <p>{group.note}</p>
-            </div>
-            <div class="cards">
-              {group.projects.map((project) => (
-                <ProjectCard {project} />
-              ))}
-            </div>
+        groups.map((group, i) => (
+          <div
+            class="group"
+            role="tabpanel"
+            id={`panel-${group.category}`}
+            aria-labelledby={`tab-${group.category}`}
+            hidden={i !== 0}
+          >
+            <p class="group-note">{group.note}</p>
+            {group.projects.length === 0 ? (
+              <p class="group-empty">{group.empty}</p>
+            ) : (
+              <div class="cards">
+                {group.projects.map((project) => (
+                  <ProjectCard {project} />
+                ))}
+              </div>
+            )}
           </div>
         ))
       }
     </Section>
+
+    <script>
+      const tabs = [...document.querySelectorAll<HTMLButtonElement>('.tab[role="tab"]')];
+      for (const tab of tabs) {
+        tab.addEventListener('click', () => {
+          for (const t of tabs) {
+            const selected = t === tab;
+            t.setAttribute('aria-selected', String(selected));
+            const panel = document.getElementById(t.getAttribute('aria-controls')!);
+            if (panel) panel.hidden = !selected;
+          }
+        });
+      }
+    </script>
 
     <Section id="skills" eyebrow="stage 03 / stack" title="Tools I reach for">
       <SkillsGrid />
@@ -69,25 +106,43 @@ const groups = [
 </Base>
 
 <style>
-  .group + .group {
-    margin-top: 2.6rem;
-  }
-  .group-head {
+  .tabs {
     display: flex;
-    align-items: baseline;
-    gap: 0.9rem;
+    gap: 0.4rem;
     flex-wrap: wrap;
-    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 1.4rem;
   }
-  .group-head h3 {
+  .tab {
+    font-family: var(--font-mono);
     font-size: 0.85rem;
     font-weight: 500;
     letter-spacing: 0.06em;
+    color: var(--ink-faint);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    padding: 0.45rem 0.8rem;
+    cursor: pointer;
+  }
+  .tab:hover {
     color: var(--accent-deep);
   }
-  .group-head p {
+  .tab[aria-selected='true'] {
+    color: var(--accent-deep);
+    border-bottom-color: var(--accent);
+  }
+  .group-note {
     font-size: 0.85rem;
     color: var(--ink-faint);
+    margin-bottom: 1rem;
+  }
+  .group-empty {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    max-width: 52ch;
+    padding-block: 0.5rem 1rem;
   }
   .cards {
     display: grid;

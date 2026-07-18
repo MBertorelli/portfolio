@@ -21,19 +21,21 @@ Read `README.md` for the human-facing docs; this file is for working sessions.
 
 ## Architecture decisions
 
-- **Astro 7, no UI framework, no client JS.** Chosen over Next.js/Hugo for
-  zero-JS static output and Markdown content collections. Keep it that way —
-  don't add React for something CSS can do.
+- **Astro 7, no UI framework.** Chosen over Next.js/Hugo for static output
+  and Markdown content collections. The only client JS is the tiny vanilla
+  tab switcher for case-study categories in `index.astro` — keep it that
+  way; don't add React for something CSS or a few lines of JS can do.
 - **Content lives in three places** (by change frequency):
   - `src/consts.ts` — identity: name, links, positioning, CV filename.
   - `src/data/profile.ts` — experience timeline, skills, education.
   - `src/content/{projects,blog}/*.md` — collections defined in
     `src/content.config.ts` (Astro glob loaders; entry `id` = filename slug).
 - **Case studies have a `category`**: `freelance` | `industry` | `personal`
-  (schema in `src/content.config.ts`). The home page groups them in that
-  order, hiding empty groups; group labels/notes live in `index.astro`.
-  Industry entries are anonymized work stories (problem → approach →
-  outcome). Frontmatter `order` sorts within and across groups.
+  (schema in `src/content.config.ts`). The home page shows them as tabs
+  (/freelance default, /industry, /personal) with empty-state text per tab;
+  labels/notes live in `index.astro`. Industry entries are anonymized work
+  stories (problem → approach → outcome). Frontmatter `order` sorts within
+  a tab.
 - **CV PDF is generated, not uploaded**: `npm run generate:cv` runs
   `scripts/generate-cv.mjs` (pdf-lib, brand colors from palette.json) and
   writes `public/cv-mathias-bertorelli.pdf`. Regenerate after any experience
