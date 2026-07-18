@@ -36,6 +36,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
 
 <style>
   main {
+    --content-width: 50rem;
     padding-top: 3rem;
     min-height: 45vh;
   }
