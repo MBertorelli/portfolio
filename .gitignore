@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # private source material (contains home address)
 CV - Mathias Bertorelli - English.pdf
+
+# local planning notes, not for the public repo
+blog/
