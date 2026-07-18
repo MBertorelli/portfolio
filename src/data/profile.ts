@@ -66,11 +66,11 @@ export const experience: Job[] = [
 ];
 
 export const skills: { group: string; items: string[] }[] = [
-  { group: 'Cloud', items: ['GCP', 'AWS (EC2, ECS, VPC, S3)'] },
+  { group: 'Cloud', items: ['GCP', 'AWS'] },
   { group: 'Infrastructure as Code', items: ['Terraform'] },
   { group: 'Containers & CI/CD', items: ['Docker', 'Docker Compose', 'GitHub Actions', 'CI/CD pipelines'] },
   { group: 'MLOps', items: ['Apache Airflow', 'Feature Stores', 'Model lifecycle', 'ONNX', 'TensorRT'] },
-  { group: 'GenAI', items: ['RAG', 'Agentic frameworks', 'Prompt engineering'] },
+  { group: 'GenAI', items: ['RAG', 'Agentic frameworks'] },
   { group: 'Languages & ML', items: ['Python', 'PyTorch', 'TensorFlow', 'Scikit-learn'] },
 ];
 
